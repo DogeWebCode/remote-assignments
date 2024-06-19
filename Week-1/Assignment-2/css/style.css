@@ -1,9 +1,10 @@
 body {
   width: auto;
   max-width: 1200px;
-  margin: 0;
+  margin: 0px;
   /* 用這個就不用特別去扣長寬，設多少就是多少 */
   box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
 }
 
 nav {
@@ -15,6 +16,16 @@ nav {
   display: flex;
   align-items: center;
   height: 2.2rem;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  height: 30px;
+  margin-right: 3px;
 }
 
 nav div.menu ul {
@@ -68,9 +79,27 @@ nav div.menu ul li {
 }
 
 #btn-submit {
-  width: 10%;
+  width: 90px;
   height: 40px;
   margin-top: 20px;
   background-color: #e0edfd;
   border: 0em;
+}
+
+#btn-submit:hover {
+  background-color: #cfdcec;
+}
+
+@media screen and (max-width: 975px) {
+  .contenbox-top {
+    flex-direction: column;
+  }
+
+  .contenbox-bottom {
+    flex-direction: column;
+  }
+
+  #btn-submit {
+    margin-bottom: 20px;
+  }
 }
