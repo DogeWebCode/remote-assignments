@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google for Developers 導覽列</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: white;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo picture img {
+            height: 24px;
+            margin-right: 20px;
+        }
+
+        .nav_middle {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            width: 100%;
+        }
+
+        .nav_middle a {
+            color: #5f6368;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .nav_middle a:hover {
+            text-decoration: underline;
+        }
+
+        .search-bar {
+            margin-left: auto;
+            /* 將搜索框推到右邊 */
+            display: flex;
+            align-items: center;
+            background-color: #f1f3f4;
+            border-radius: 24px;
+            padding: 5px 10px;
+        }
+
+        .search-bar input[type="text"] {
+            border: none;
+            background: none;
+            outline: none;
+            padding: 5px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <picture>
+                <img src="https://www.gstatic.com/devrel-devsite/prod/vc5df62aff689c916c31b2ac1e49a7e8c5ecada1bb13dcdd68aaefb1e1e9b9ec0/developers/images/lockup-new.svg"
+                    alt="Google for Developers">
+            </picture>
+            <div class="nav_middle">
+                <a href="#">產品</a>
+                <a href="#">解決方案</a>
+                <a href="#">事件</a>
+                <a href="#">瞭解詳情</a>
+                <a href="#">Community</a>
+                <a href="#">開發人員計畫</a>
+                <a href="#">網誌</a>
+                <form action="https://developers.google.com/s/results?hl=zh-tw" class="search-bar">
+                    <input type="text" placeholder="搜尋結果" class="search">
+                </form>
+            </div>
+        </div>
+    </nav>
+</body>
+
+</html>
