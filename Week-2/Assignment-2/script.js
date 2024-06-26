@@ -27,7 +27,7 @@ console.log(
       },
       {
         name: "Product 3",
-        price: 300,
+        price: 250,
       },
     ],
   })

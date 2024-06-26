@@ -15,11 +15,10 @@ console.log(count(input1));
 function groupByKey(input) {
   // your code here
   const object_CharacterCount = input.reduce((obj, num) => {
-    const key = obj[num.key];
     if (obj[num.key] !== undefined) {
-      key += num.value;
+      obj[num.key] += num.value;
     } else {
-      key = num.value;
+      obj[num.key] = num.value;
     }
     return obj;
   }, {});
