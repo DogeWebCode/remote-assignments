@@ -1,0 +1,109 @@
+body {
+  width: auto;
+  max-width: 1200px;
+  margin: 0px;
+  /* 用這個就不用特別去扣長寬，設多少就是多少 */
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+nav {
+  padding: 5px 5%;
+  background-color: #eeeeee;
+  font-size: 16px;
+  /* flex佈局，用於水平分布子元素，這裡就是將div.logo跟div.menu裡的分開 */
+  justify-content: space-between;
+  display: flex;
+  align-items: center;
+  height: 2.2rem;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  height: 30px;
+  margin-right: 3px;
+}
+
+nav div.menu ul {
+  list-style: none;
+  display: flex;
+}
+
+nav div.menu ul li {
+  margin-left: 3.5rem;
+}
+
+nav div.menu ul li:hover {
+  color: #3269ad;
+}
+
+.welcome {
+  background-color: #cfdcec;
+  height: 200px;
+  display: flex;
+  /* 水平置中 */
+  justify-content: center;
+  /* 垂直置中 */
+  align-items: center;
+}
+
+.welcome h1 {
+  margin: 0px;
+}
+
+.box {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.content {
+  margin: 0.5rem;
+  padding-top: 10px;
+  color: #000;
+  background: #8b98a8;
+  width: 480px;
+  height: 125px;
+}
+
+.contenbox-top {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.contenbox-bottom {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+#btn-submit {
+  width: 90px;
+  height: 40px;
+  margin-top: 20px;
+  background-color: #e0edfd;
+  border: 0em;
+}
+
+#btn-submit:hover {
+  background-color: #cfdcec;
+}
+
+@media screen and (max-width: 975px) {
+  .contenbox-top {
+    flex-direction: column;
+  }
+
+  .contenbox-bottom {
+    flex-direction: column;
+  }
+
+  #btn-submit {
+    margin-bottom: 20px;
+  }
+}
