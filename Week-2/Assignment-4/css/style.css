@@ -72,7 +72,7 @@ nav div.menu ul li:hover {
 
 .contenbox_show {
   display: flex;
-  flex-direction: row;
+  flex-wrap: wrap;
   justify-content: center;
 }
 
@@ -90,18 +90,4 @@ nav div.menu ul li:hover {
 
 #btn-submit:hover {
   background-color: #cfdcec;
-}
-
-@media screen and (max-width: 975px) {
-  .contenbox-top {
-    flex-direction: column;
-  }
-
-  .contenbox-bottom {
-    flex-direction: column;
-  }
-
-  #btn-submit {
-    margin-bottom: 20px;
-  }
 }
