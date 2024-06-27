@@ -1,6 +1,5 @@
 body {
   width: auto;
-  max-width: 1200px;
   margin: 0px;
   /* 用這個就不用特別去扣長寬，設多少就是多少 */
   box-sizing: border-box;
@@ -74,6 +73,7 @@ nav div.menu ul li:hover {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  max-width: 1200px;
 }
 
 .contenbox_hidden {
