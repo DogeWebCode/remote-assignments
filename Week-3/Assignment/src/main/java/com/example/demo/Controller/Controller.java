@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.http.ResponseCookie;
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.view.RedirectView;
 
 import java.io.IOException;
 import java.net.URLEncoder;
@@ -46,7 +47,7 @@ public class Controller {
         }
     }
 
-    @PostMapping("/trackName")
+    @GetMapping("/trackName")
     public String setCookie(@RequestParam("name") String inputName, HttpServletResponse response) throws IOException {
         String encodedName = URLEncoder.encode(inputName, StandardCharsets.UTF_8);
         ResponseCookie resCookie = ResponseCookie.from("name", encodedName)
@@ -57,7 +58,8 @@ public class Controller {
                 .domain("localhost")
                 .build();
         response.addHeader("Set-Cookie", resCookie.toString());
-        return "redirect:/myName";
+        response.sendRedirect("/myName");
+        return "cookie set";
     }
 
     @GetMapping("/myName")
