@@ -1,8 +1,7 @@
 HELP.md
-target/
-mvn/
-.mvnw
-.mvnw.cmd
+.mvn
+mvnw
+mvnw.cmd
 !**/src/main/**/target/
 !**/src/test/**/target/
 
@@ -61,6 +60,19 @@ chrome-profiler-events*.json
 .settings/
 *.sublime-workspace
 
+# Maven
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+# https://github.com/takari/maven-wrapper#usage-without-binary-jar
+.mvn/wrapper/maven-wrapper.jar
+
 # misc
 /.angular/cache
 /.sass-cache
@@ -71,6 +83,24 @@ npm-debug.log
 yarn-error.log
 testem.log
 /typings
+
+# Compiled class file
+*.class
+
+# Log file
+*.log
+
+# BlueJ files
+*.ctxt
+
+# Package Files #
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
 
 # System Files
 .DS_Store
