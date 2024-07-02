@@ -17,7 +17,7 @@
     document.getElementById('submit').addEventListener('click', function () {
         const num = document.getElementById('num').value;
         console.log(num);
-        fetch(`/data?num=${num}`, {
+        fetch(`/data?number=${num}`, {
             method: 'GET'
         })
             .then(response => response.text())

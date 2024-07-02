@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RestController
 public class sumController {
     @RequestMapping(value = "/data", method = RequestMethod.GET)
-    public String numberSum(@RequestParam(value = "num", required = true, defaultValue = "") String num) {
+    public String numberSum(@RequestParam(value = "number", required = true, defaultValue = "") String num) {
         //The center bracket is used to define the character class, \d is for 0~9, * is for 0 or more numbers.
         boolean isInteger = num.matches("^[\\d]*$");
         if (num.isEmpty()) {
