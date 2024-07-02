@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class sumController {
     @RequestMapping(value = "/data", method = RequestMethod.GET)
     public String numberSum(@RequestParam(value = "num", required = true, defaultValue = "") String num) {
-        //中括號用於定義character class，\d是代表0~9，*代表0或多個數字。
+        //The center bracket is used to define the character class, \d is for 0~9, * is for 0 or more numbers.
         boolean isInteger = num.matches("^[\\d]*$");
         if (num.isEmpty()) {
             return "Lack of Parameter";
