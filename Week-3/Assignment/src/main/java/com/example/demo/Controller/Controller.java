@@ -1,7 +1,6 @@
 package com.example.demo.Controller;
 
 import jakarta.servlet.http.HttpServletResponse;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -10,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.http.ResponseCookie;
 import org.springframework.web.bind.annotation.CookieValue;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.io.IOException;
 import java.net.URLEncoder;
@@ -28,13 +28,13 @@ public class Controller {
             return "Wrong Parameter";
         } else {
             try {
-                // 用long type擴大數字範圍，盡量避免溢位情況發生。
+                // Use the 'long' type to extend the numeric range and minimize the occurrence of overflow.
                 long number = Long.parseLong(num);
-                // (1 + 2 + 3 +...+ N) = N * (N + 1) / 2 => 求和公式
-                // 此公式只會跑一次乘法、一次加法、一次除法，與n無關，時間複雜度為O(1)，用nanotime看都是200ns左右。
+                // (1 + 2 + 3 +...+ N) = N * (N + 1) / 2
+                // look at it in terms of nanometer time, it is around 200ns.
                 long total = number * (number + 1) / 2;
 
-                /* 若使用for迴圈計算，時間複雜度為O(n)，n越大，算的次數也會越多，用nanotime看每多一位數大概增加10倍的時間。
+                /* With nano time, each additional digit increases the time by a factor of 10.
                 for (int i = 0; i <= number; i++) {
                     total1 += i;
                 }
@@ -46,18 +46,18 @@ public class Controller {
         }
     }
 
-    @GetMapping("/trackName")
+    @PostMapping("/trackName")
     public String setCookie(@RequestParam("name") String inputName, HttpServletResponse response) throws IOException {
         String encodedName = URLEncoder.encode(inputName, StandardCharsets.UTF_8);
         ResponseCookie resCookie = ResponseCookie.from("name", encodedName)
                 .httpOnly(true)
+                //one year.
                 .maxAge(60 * 60 * 24 * 365)
                 .path("/")
                 .domain("localhost")
                 .build();
         response.addHeader("Set-Cookie", resCookie.toString());
-        response.sendRedirect("/myName");
-        return "cookie set";
+        return "redirect:/myName";
     }
 
     @GetMapping("/myName")
