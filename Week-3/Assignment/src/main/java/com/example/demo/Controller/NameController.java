@@ -1,6 +1,5 @@
 package com.example.demo.Controller;
 
-import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.http.ResponseCookie;
 import org.springframework.http.ResponseEntity;
@@ -12,9 +11,9 @@ import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 
 @Controller
-public class nameController {
+public class NameController {
     @GetMapping("/trackName")
-    public String setCookie(@RequestParam("name") String inputName, HttpServletResponse response) throws IOException {
+    public String setCookie(@RequestParam("name") String inputName, HttpServletResponse response){
         String encodedName = URLEncoder.encode(inputName, StandardCharsets.UTF_8);
         ResponseCookie resCookie = ResponseCookie.from("name", encodedName)
                 .httpOnly(true)
@@ -31,8 +30,8 @@ public class nameController {
     /*
     @PostMapping("/trackName")
     public String trackName(@RequestParam String name, HttpServletResponse response) {
-        Cookie cookie = new Cookie("name", name);
-        cookie.setMaxAge(24 * 60 * 60); // 設置 cookie 的有效期為一天
+        Cookie = new Cookie("name", name);
+        cookie.setMaxAge(24 * 60 * 60); // One Day.
         response.addCookie(cookie);
         return "redirect:/myName";
     }
