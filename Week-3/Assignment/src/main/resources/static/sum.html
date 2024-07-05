@@ -8,7 +8,7 @@
 <h1>等差數列相加(1+2+3+...+N)</h1>
 <form id="sum">
     <label for="num">請輸入N：</label>
-    <input type="text" id="num" name="num" required>
+    <input type="text" id="num" name="num">
     <input type="button" value="計算" id="submit">
 </form>
 <div id="result"></div>
@@ -16,10 +16,7 @@
 <script>
     document.getElementById('submit').addEventListener('click', function () {
         const num = document.getElementById('num').value;
-        console.log(num);
-        fetch(`/data?number=${num}`, {
-            method: 'GET'
-        })
+        fetch(`/data?number=${num}`)
             .then(response => response.text())
             .then(data => {
                 document.getElementById('result').innerHTML = `<h2>計算結果為：${data}</h2>`;

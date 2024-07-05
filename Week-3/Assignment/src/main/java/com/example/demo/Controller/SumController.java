@@ -1,15 +1,11 @@
 package com.example.demo.Controller;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.RequestParam;
-
+import org.springframework.web.bind.annotation.*;
 
 
 @RestController
 public class SumController {
-    @RequestMapping(value = "/data", method = RequestMethod.GET)
+    @GetMapping(value = "/data")
     public String numberSum(@RequestParam(value = "number", required = true, defaultValue = "") String num) {
         //The center bracket is used to define the character class, \d is for 0~9, * is for 0 or more numbers.
         boolean isInteger = num.matches("^[\\d]*$");
