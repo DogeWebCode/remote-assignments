@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LoginPage</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container flex">
+    <div class="flex">
+        <form th:action="@{/login}" method="post">
+            <label for="user-login-email">
+                <input type="email" placeholder="Email" name="email" id="user-login-email" required>
+            </label>
+            <label for="user-login-password">
+                <input type="password" placeholder="Password" name="password" id="user-login-password" required>
+            </label>
+            <div class="link">
+                <button type="submit" class="login">Login</button>
+            </div>
+            <hr>
+            <div th:text="${loginMessage}"></div>
+        </form>
+
+        <form th:action="@{/register}" method="post">
+            <label for="user-register-email">
+                <input type="email" placeholder="Email" name ="email" id="user-register-email" required>
+            </label>
+            <label for="user-register-password">
+                <input type="password" placeholder="Password" name="password" id="user-register-password" required>
+            </label>
+            <div class="link">
+                <button type="submit" class="register">register</button>
+            </div>
+            <hr>
+            <div th:text="${registerMessage}"></div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

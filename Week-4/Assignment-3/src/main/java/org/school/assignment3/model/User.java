@@ -1,14 +1,14 @@
 package org.school.assignment3.model;
 
-public class UserRequest {
+public class User {
     private Integer id;
     private String email;
     private String password;
 
-    public UserRequest() {
+    public User() {
     }
 
-    public UserRequest(Integer id, String email, String password) {
+    public User(Integer id, String email, String password) {
         this.id = id;
         this.email = email;
         this.password = password;
