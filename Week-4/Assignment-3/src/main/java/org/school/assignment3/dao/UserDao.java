@@ -1,13 +1,16 @@
 package org.school.assignment3.dao;
 
+import ch.qos.logback.core.net.SMTPAppenderBase;
+import org.mindrot.jbcrypt.BCrypt;
+import org.school.assignment3.utils.BCyptUtil;
 import org.school.assignment3.model.User;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.*;
 import java.util.Properties;
-
 
 @Repository
 public class UserDao implements UserSource {
@@ -40,9 +43,9 @@ public class UserDao implements UserSource {
         // java try with resource will automatically close the resource.
         try (Connection connection = openConnection();
              PreparedStatement prepareStatement = connection.prepareStatement(sql)) {
-
             prepareStatement.setString(1, email);
             prepareStatement.setString(2, password);
+            System.out.println(prepareStatement);
 
             prepareStatement.executeUpdate();
 
@@ -53,19 +56,20 @@ public class UserDao implements UserSource {
 
     @Override
     public User findUserByEmailAndPassword(String email, String password) {
-        String sql = "SELECT * FROM user WHERE email = ? AND password = ?";
+        String sql = "SELECT * FROM user WHERE email = ?";
         try (Connection connection = openConnection();
              PreparedStatement prepareStatement = connection.prepareStatement(sql)) {
-
             prepareStatement.setString(1, email);
-            prepareStatement.setString(2, password);
-            try (ResultSet result = prepareStatement.executeQuery()) {
-                if (result.next()) {
+            ResultSet result = prepareStatement.executeQuery();
+
+            if (result.next()) {
+                String storedHash = result.getString("password");
+                if (BCyptUtil.verifyPassword(password, storedHash)) {
                     return createUserFromResult(result);
                 }
             }
         } catch (SQLException e) {
-            throw new RuntimeException();
+            throw new RuntimeException("Failed to find user with email: " + email, e);
         }
         return null;
     }
@@ -75,14 +79,12 @@ public class UserDao implements UserSource {
         String sql = "SELECT COUNT(*) FROM user WHERE email = ?";
         try (Connection connection = openConnection();
              PreparedStatement prepareStatement = connection.prepareStatement(sql)) {
-
             prepareStatement.setString(1, email);
             ResultSet result = prepareStatement.executeQuery();
             if (result.next()) {
                 int count = result.getInt(1);
                 return count > 0;
             }
-
         } catch (SQLException e) {
             throw new RuntimeException();
         }
