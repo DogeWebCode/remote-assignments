@@ -4,11 +4,10 @@ import org.mindrot.jbcrypt.BCrypt;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.security.NoSuchAlgorithmException;
-import java.security.SecureRandom;
 
-public class BCyptUtil {
-    private static final Logger logger = LoggerFactory.getLogger(BCyptUtil.class);
+
+public class BCryptUtil {
+    private static final Logger logger = LoggerFactory.getLogger(BCryptUtil.class);
     private static final int WORK_FACTOR = 12;
 
     public static String encodePassword(String password) {

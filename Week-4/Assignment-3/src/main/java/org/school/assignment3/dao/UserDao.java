@@ -1,10 +1,8 @@
 package org.school.assignment3.dao;
 
-import ch.qos.logback.core.net.SMTPAppenderBase;
-import org.mindrot.jbcrypt.BCrypt;
-import org.school.assignment3.utils.BCyptUtil;
+
+import org.school.assignment3.utils.BCryptUtil;
 import org.school.assignment3.model.User;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import java.io.FileInputStream;
@@ -19,11 +17,11 @@ public class UserDao implements UserSource {
     private final String username;
     private final String password;
 
-    public UserDao() throws IOException, ClassNotFoundException {
+    public UserDao() throws IOException {
         this("src/main/resources/properties/jdbc.properties");
     }
 
-    public UserDao(String configFile) throws IOException, ClassNotFoundException {
+    public UserDao(String configFile) throws IOException {
         Properties props = new Properties();
         props.load(new FileInputStream(configFile));
 
@@ -64,7 +62,7 @@ public class UserDao implements UserSource {
 
             if (result.next()) {
                 String storedHash = result.getString("password");
-                if (BCyptUtil.verifyPassword(password, storedHash)) {
+                if (BCryptUtil.verifyPassword(password, storedHash)) {
                     return createUserFromResult(result);
                 }
             }

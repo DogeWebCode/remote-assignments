@@ -1,14 +1,14 @@
 package org.school.assignment3.service;
 
-import org.mindrot.jbcrypt.BCrypt;
+
 import org.school.assignment3.dao.UserDao;
 import org.school.assignment3.model.User;
-import org.school.assignment3.utils.BCyptUtil;
+import org.school.assignment3.utils.BCryptUtil;
 import org.springframework.beans.InvalidPropertyException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.sql.SQLOutput;
+
 
 @Service
 public class UserSerivceImpl implements UserService {
@@ -19,7 +19,7 @@ public class UserSerivceImpl implements UserService {
     @Override
     public void register(String email, String password) {
         if (!userDao.isEmailExists(email)) {
-            String encodePassword = BCyptUtil.encodePassword(password);
+            String encodePassword = BCryptUtil.encodePassword(password);
             userDao.insertUser(email, encodePassword);
         } else {
             throw new InvalidPropertyException(User.class, "email", "Email already exists");
