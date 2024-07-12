@@ -3,6 +3,8 @@ package org.school.assignment3.dao;
 
 import org.school.assignment3.utils.BCryptUtil;
 import org.school.assignment3.model.User;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
 import java.io.FileInputStream;
@@ -12,7 +14,7 @@ import java.util.Properties;
 
 @Repository
 public class UserDao implements UserSource {
-
+    private static final Logger logger = LoggerFactory.getLogger(UserDao.class);
     private final String url;
     private final String username;
     private final String password;
@@ -43,9 +45,9 @@ public class UserDao implements UserSource {
              PreparedStatement prepareStatement = connection.prepareStatement(sql)) {
             prepareStatement.setString(1, email);
             prepareStatement.setString(2, password);
-            System.out.println(prepareStatement);
 
             prepareStatement.executeUpdate();
+            logger.info("User created with email: " + email);
 
         } catch (SQLException e) {
             throw new RuntimeException("Failed to create user with email: " + email, e);
