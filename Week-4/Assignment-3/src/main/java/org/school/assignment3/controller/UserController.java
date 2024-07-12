@@ -29,7 +29,7 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public String login(@ModelAttribute User user, Model model) {
+    public String login(User user, Model model) {
         try {
             User loggedUser = userSerivceImpl.login(user.getEmail(), user.getPassword());
             model.addAttribute("welcomeMessage", loggedUser.getEmail() + "登入成功!");

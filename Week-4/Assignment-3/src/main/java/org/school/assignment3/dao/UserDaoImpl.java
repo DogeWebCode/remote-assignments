@@ -15,9 +15,10 @@ import java.util.Properties;
 @Repository
 public class UserDaoImpl implements UserDao {
     private static final Logger logger = LoggerFactory.getLogger(UserDaoImpl.class);
-    private final String url;
-    private final String username;
-    private final String password;
+
+    private String url;
+    private String username;
+    private String password;
 
     public UserDaoImpl() throws IOException {
         this("src/main/resources/properties/jdbc.properties");

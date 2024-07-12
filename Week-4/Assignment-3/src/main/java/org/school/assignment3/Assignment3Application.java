@@ -8,9 +8,4 @@ public class Assignment3Application {
     public static void main(String[] args) {
         SpringApplication.run(Assignment3Application.class, args);
     }
-
-//    @Bean
-//    public dbConnect dbConnect() throws IOException,ClassNotFoundException {
-//        return new dbConnect();
-//    }
 }
